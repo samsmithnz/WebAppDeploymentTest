@@ -56,7 +56,7 @@ jobs:
     - name: Download build artifacts
       uses: actions/download-artifact@v1.0.0
       with:
-        name: drop  
+        name: webservice  
     - name: Display GitVersion outputs
       run: |
         echo "Version: ${{ needs.build.outputs.Version }}" 
