@@ -58,10 +58,12 @@ jobs:
       with:
         name: webservice  
     - run: |
-        ls
+        #ls
         #ls webservice/webservice
-        #cd folder; zip -r ../zipped_dir.zip *
+        cd webservice
+        zip -r ../webservice.zip *
     - uses: montudor/action-zip@v1
+      if: 0 == 1
       with:
         args: zip -qq -r ${{ github.workspace }}/webservice.zip webservice/*
     - name: Display GitVersion outputs
