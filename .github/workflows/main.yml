@@ -41,7 +41,7 @@ jobs:
       with:
         dotnet-version: 5.0.201   
     - name: .NET Publish Web Service
-      run: dotnet publish src/DevOpsMetrics.Service/DevOpsMetrics.Service.csproj --configuration Debug --output ${{ github.workspace }}/webservice
+      run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webservice
     - name: Upload web service build artifacts back to GitHub
       uses: actions/upload-artifact@v2
       with:
