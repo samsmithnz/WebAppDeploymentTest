@@ -41,15 +41,12 @@ jobs:
       with:
         dotnet-version: 5.0.201   
     - name: .NET Publish Web Service
-      run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webserviceDir
-    - uses: montudor/action-zip@v1
-      with:
-        args: zip -qq -r webservice.zip "${{ github.workspace }}/webserviceDir/"
+      run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webservice
     - name: Upload web service build artifacts back to GitHub
       uses: actions/upload-artifact@v2
       with:
         name: webservice
-        path: ${{ github.workspace }}/webservice.zip
+        path: ${{ github.workspace }}/webservice
         
   release:
     runs-on: ubuntu-latest
@@ -60,6 +57,10 @@ jobs:
       uses: actions/download-artifact@v1.0.0
       with:
         name: webservice  
+    - run: DIR 
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r webservice.zip "${{ github.workspace }}"
     - name: Display GitVersion outputs
       run: |
         echo "Version: ${{ needs.build.outputs.Version }}" 
