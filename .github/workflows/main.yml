@@ -44,7 +44,7 @@ jobs:
       run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webserviceDir
     - uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r webservice.zip ${{ github.workspace }}/webserviceDir/*.*
+        args: zip -qq -r webservice.zip "${{ github.workspace }}/webserviceDir"
     - name: Upload web service build artifacts back to GitHub
       uses: actions/upload-artifact@v2
       with:
