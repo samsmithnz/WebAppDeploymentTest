@@ -57,10 +57,10 @@ jobs:
       uses: actions/download-artifact@v1.0.0
       with:
         name: webservice  
-    - run: ls 
+    - run: ls webservice
     - uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r webservice.zip "${{ github.workspace }}"
+        args: zip -qq -r webservice.zip webservice
     - name: Display GitVersion outputs
       run: |
         echo "Version: ${{ needs.build.outputs.Version }}" 
