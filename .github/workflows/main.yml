@@ -41,12 +41,15 @@ jobs:
       with:
         dotnet-version: 5.0.201   
     - name: .NET Publish Web Service
-      run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webservice
+      run: dotnet publish WebApp/WebApp.Service/WebApp.Service.csproj --configuration Debug --output ${{ github.workspace }}/webserviceDir
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r webservice.zip ${{ github.workspace }}/webserviceDir
     - name: Upload web service build artifacts back to GitHub
       uses: actions/upload-artifact@v2
       with:
         name: webservice
-        path: ${{ github.workspace }}/webservice
+        path: ${{ github.workspace }}/webservice.zip
         
   release:
     runs-on: ubuntu-latest
@@ -65,7 +68,7 @@ jobs:
       uses: ncipollo/release-action@v1
       #if: needs.build.outputs.CommitsSinceVersionSource > 0 #Only create a release if there has been a commit/version change
       with:
-        artifacts: ${{ github.workspace }}/webservice/*.*
+        artifacts: ${{ github.workspace }}/webservice.zip
         tag: ${{ needs.build.outputs.Version }}
         name: Release ${{ needs.build.outputs.Version }}
         token: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
