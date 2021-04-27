@@ -1,15 +1,15 @@
 ﻿CLS
-$resourceGroupName="devopsmetricswestus"
+$resourceGroupName="samwestus"
 $resourceLocation="westus"
-$keyVaultName="devops-prod-wu-vault"
-$storageName="devopsprodwustorage"
-$hostingName="devops-prod-wu-hosting"
-$appInsightsName="devops-prod-wu-appinsights"
-$serviceName="devops-prod-wu-service"
-$websiteName="devops-prod-wu-web"
-$functionName="devops-prod-wu-function"
+$keyVaultName="samweb-prod-wu-vault"
+$storageName="samwebprodwustorage"
+$hostingName="samweb-prod-wu-hosting"
+$appInsightsName="samweb-prod-wu-appinsights"
+$serviceName="samweb-prod-wu-service"
+$websiteName="samweb-prod-wu-web"
+$functionName="samweb-prod-wu-function"
 $administrationEmailAccount="samsmit@microsoft.com"
-$templatesLocation="C:\Users\samsmit\source\repos\DevOpsMetrics\src\DevOpsMetrics.Infrastructure\Templates"
+$templatesLocation="C:\Users\samsmit\source\repos\WebAppDeploymentTest\WebApp\WebApp.IaC\Templates"
 $error.clear()
 
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()

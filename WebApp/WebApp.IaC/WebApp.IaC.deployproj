@@ -30,6 +30,7 @@
       <Visible>False</Visible>
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <None Include="DownloadReleaseFromGitHub.ps1" />
     <None Include="Templates\ApplicationInsights.json" />
     <None Include="Templates\Function.json" />
     <None Include="Templates\KeyVault.json" />
